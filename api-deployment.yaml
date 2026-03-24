@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab3-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab3-api
+  template:
+    metadata:
+      labels:
+        app: lab3-api
+    spec:
+      containers:
+      - name: lab3-api
+        image: my-lab2-api
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
